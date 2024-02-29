@@ -23,7 +23,7 @@ def home():
 def all_routes(path):
     return redirect('/')
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 @app.route('/evaluate', methods=['GET'])
 def evaluate_answers():
