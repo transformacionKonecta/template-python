@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 port = int(os.environ.get("PORT", 5000))
 
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
+# os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 @app.route('/static/<path:path>')
 def serve_static(path):
