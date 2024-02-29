@@ -34,6 +34,7 @@ def evaluate_answers():
         # ground_truth = data_request.get("ground_truth", [])
         # answers = data_request.get("answers", [])
         # contexts = data_request.get("contexts", [])
+        print('uno')
         questions = [
                     "Qué dijo el presidente sobre la crisis política?", 
                     ]
@@ -58,7 +59,7 @@ def evaluate_answers():
             "ground_truth": ground_truth
         }
         dataset = Dataset.from_dict(data)
-
+        print('dos')
         result = evaluate(
             dataset=dataset, 
             metrics=[
@@ -69,7 +70,7 @@ def evaluate_answers():
             ],
             raise_exceptions=False
         )
-
+        print('tres')
         pd.set_option("display.max_colwidth", None)
         df = result.to_pandas()
 
