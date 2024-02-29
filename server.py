@@ -6,10 +6,12 @@ from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy, context_recall, context_precision
 import pandas as pd
-
+import constants
 app = Flask(__name__)
 
 port = int(os.environ.get("PORT", 5000))
+
+os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 @app.route('/static/<path:path>')
 def serve_static(path):
@@ -22,8 +24,6 @@ def home():
 @app.route('/<path:path>')
 def all_routes(path):
     return redirect('/')
-
-os.environ["OPENAI_API_KEY"] = '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'
 
 @app.route('/evaluate', methods=['GET'])
 def evaluate_answers():
