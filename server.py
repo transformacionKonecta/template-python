@@ -6,8 +6,12 @@ from datasets import Dataset
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy, context_recall, context_precision
 import pandas as pd
+from flask_cors import CORS
 import constants
 app = Flask(__name__)
+CORS(app) 
+CORS(app, origins=["http://localhost:3000"])  # Cambia la URL según tus necesidades
+
 
 port = int(os.environ.get("PORT", 5000))
 
