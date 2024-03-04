@@ -5,3 +5,4 @@ pandas
 ragas
 openai
 # flask_cors
+flask-cors
