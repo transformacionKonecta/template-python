@@ -1,5 +1,7 @@
 import os
-from aiohttp import request
+# from aiohttp import request
+from flask import request
+import json
 from flask import Flask, jsonify, send_from_directory, render_template, redirect
 import json
 from datasets import Dataset
@@ -29,32 +31,32 @@ def home():
 def all_routes(path):
     return redirect('/')
 
-@app.route('/evaluate', methods=['GET'])
+@app.route('/evaluate', methods=['POST'])
 def evaluate_answers():
     try:
-        # data_request = request.json
+        data_request = request.json
 
-        # questions = data_request.get("questions", [])
-        # ground_truth = data_request.get("ground_truth", [])
-        # answers = data_request.get("answers", [])
-        # contexts = data_request.get("contexts", [])
+        questions = data_request.get("questions", [])
+        ground_truth = data_request.get("ground_truth", [])
+        answers = data_request.get("answers", [])
+        contexts = data_request.get("contexts", [])
         print('uno')
-        questions = [
-                    "Qué dijo el presidente sobre la crisis política?", 
-                    ]
-        # Después
-        ground_truth = [
-        "El presidente dijo que la crisis política se debe a la corrupción y la inflación",
-        ]
+        # questions = [
+        #             "Qué dijo el presidente sobre la crisis política?", 
+        #             ]
+        # # Después
+        # ground_truth = [
+        # "El presidente dijo que la crisis política se debe a la corrupción y la inflación",
+        # ]
 
-        answers = [
-            ["El presidente dijo que la crisis política es a causa de la corrupción"],
-        ]
-        # answers = []
-        # contexts = []
-        contexts = [
-            ["El presidente mencionó en su discurso que la crisis política que atravesamos se debe al crecimiento de la corrupción",]
-        ]
+        # answers = [
+        #     ["El presidente dijo que la crisis política es a causa de la corrupción"],
+        # ]
+        # # answers = []
+        # # contexts = []
+        # contexts = [
+        #     ["El presidente mencionó en su discurso que la crisis política que atravesamos se debe al crecimiento de la corrupción",]
+        # ]
 
         data = {
             "question": questions,
