@@ -6,7 +6,7 @@ from flask import Flask, jsonify, send_from_directory, render_template, redirect
 import json
 from datasets import Dataset
 from ragas import evaluate
-from ragas.metrics import faithfulness, answer_relevancy, context_recall, context_precision
+from ragas.metrics import faithfulness, answer_relevancy, context_recall, context_precision, answer_similarity
 import pandas as pd
 from flask_cors import CORS
 import constants
@@ -17,7 +17,7 @@ CORS(app, origins=["http://localhost:3000"])  # Cambia la URL según tus necesid
 
 port = int(os.environ.get("PORT", 5000))
 
-# os.environ["OPENAI_API_KEY"] = constants.APIKEY
+os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 @app.route('/static/<path:path>')
 def serve_static(path):
@@ -73,6 +73,7 @@ def evaluate_answers():
                 context_recall,
                 faithfulness,
                 answer_relevancy,
+                answer_similarity,
             ],
             raise_exceptions=False
         )
