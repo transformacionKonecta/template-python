@@ -17,7 +17,7 @@ CORS(app, origins=["http://localhost:3000"])  # Cambia la URL según tus necesid
 
 port = int(os.environ.get("PORT", 5000))
 
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
+# os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 @app.route('/static/<path:path>')
 def serve_static(path):
