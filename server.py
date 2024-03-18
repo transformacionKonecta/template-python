@@ -6,7 +6,7 @@ from flask import Flask, jsonify, send_from_directory, render_template, redirect
 import json
 from datasets import Dataset
 from ragas import evaluate
-from ragas.metrics import faithfulness, answer_relevancy, context_recall, context_precision, answer_similarity
+from ragas.metrics import faithfulness, answer_relevancy, answer_correctness, answer_similarity
 import pandas as pd
 from flask_cors import CORS
 import constants
@@ -69,11 +69,12 @@ def evaluate_answers():
         result = evaluate(
             dataset=dataset, 
             metrics=[
-                context_precision,
-                context_recall,
+                # context_precision,
+                # context_recall,
                 faithfulness,
                 answer_relevancy,
                 answer_similarity,
+                answer_correctness,
             ],
             raise_exceptions=False
         )
